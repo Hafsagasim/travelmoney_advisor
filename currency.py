@@ -9,8 +9,6 @@ from datetime import datetime
 import pickle
 
 style.use('ggplot')
-quandl.ApiConfig.api_key = 'EsjaNdxJTou8w47JBWLe'
-
 
 ######################
 #  Data preparation  #
@@ -122,5 +120,3 @@ plt.legend(loc=4)
 plt.xlabel('Date')
 plt.ylabel('Price')
 plt.show()
-
-
