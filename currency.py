@@ -30,17 +30,21 @@ def creation_date(path_to_file):
             # so we'll settle for when its content was last modified.
             return stat.st_mtime
 
-def download_data():
-    #dfUSD = quandl.get('BOE/XUDLBK35')
-    #dfGBP = quandl.get('BOE/XUDLBK33')
-    dfEUR = quandl.get('BOE/XUDLBK34')
+def download_data(currency, save = False ):
+    if currency == 'USD':
+        df = quandl.get('BOE/XUDLBK35')
+    if currency == 'GBP':
+        df = quandl.get('BOE/XUDLBK33')
+    if currency == 'EUR':
+        df = quandl.get('BOE/XUDLBK34')
 
-   # df = pd.concat([dfUSD, dfEUR], axis=1)
+    #df = pd.concat([dfUSD, dfEUR], axis=1)
    # df = pd.concat([df, dfGBP], axis=1)
-    df= dfEUR
-    df.columns= ['GBP']
+    #df= dfGBP
+    df.columns= [currency]
 
-    df.to_csv('currency.dat', sep='\t', encoding='utf-8')
+    if save:
+        df.to_csv('currency.dat', sep='\t', encoding='utf-8')
     return df
 
     #print('Currency info saved to: currency.dat')
@@ -53,70 +57,77 @@ def load_data(filename):
         download_data()
     return pd.read_csv(filename, sep='\t')
 
-df = download_data()
-temp_df = load_data('currency.dat')
+def forecast(currency, days=7, saveclf = False):
+    df = download_data(currency)
+    temp_df = download_data(currency)
 
-df = df[['GBP']]
+    df = df[[currency]]
 
-##############################
-#      Machine learning      #
-##############################
+    # currency to forecast
+    forecast_col = currency
+    df.fillna(-99999, inplace = True)
+    #how many days to forecast for
+    forecast_out = days
 
-# currency to forecast
-forecast_col = 'GBP'
-df.fillna(-99999, inplace = True)
-#how many days to forecast for
-forecast_out = 10
+    df['label'] = df[forecast_col].shift(-forecast_out)
 
-df['label'] = df[forecast_col].shift(-forecast_out)
+    df = df [[currency,'label',]]
 
-df = df [['GBP','label',]]
+    x = np.array(df.drop(['label'],1))
 
-x = np.array(df.drop(['label'],1))
+    x = preprocessing.scale(x)
+    x = x[:-forecast_out]
+    x_lately = x[-forecast_out:]
+    df.dropna(inplace = True)
+    y = np.array(df['label'])
 
-x = preprocessing.scale(x)
-x = x[:-forecast_out]
-x_lately = x[-forecast_out:]
-df.dropna(inplace = True)
-y = np.array(df['label'])
+    x_train, x_test, y_train, y_test = cross_validation.train_test_split(x,y, test_size=0.2, random_state=0)
+    clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
 
-x_train, x_test, y_train, y_test = cross_validation.train_test_split(x,y, test_size=0.2)
-clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
+    clf.fit(x_train, y_train)
+    scores = cross_validation.cross_val_score(clf, x, y, cv=5)
 
-clf.fit(x_train, y_train)
-#saving classsifier after training
-with open('linreg_currency.pickle','wb') as f:
-    pickle.dump(clf,f)
+    #saving classsifier after training
+    if saveclf:
+        with open('linreg_currency.pickle','wb') as f:
+            pickle.dump(clf,f)
 
-#load the classifier:
-#pickle_in = open('linreg_currency.pickle','rb')
-#clf = pickle.load(pickle_in)
+    #load the classifier:
+    #pickle_in = open('linreg_currency.pickle','rb')
+    #clf = pickle.load(pickle_in)
 
-accuracy = clf.score(x_test, y_test)
+    #accuracy = clf.score(x_test, y_test)
 
-forecast_set = clf.predict(x_lately)
-print('The forecast is for ' + str(forecast_out) + ' days.')
-print('The accuracy is: ' +  str(accuracy))
-print('The forecast:')
-print(forecast_set)
+    forecast_set = clf.predict(x_lately)
+    print('The forecast is for ' + str(forecast_out) + ' days.')
 
-#plotting
-df['Forecast'] = np.nan
+    print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+    print('The forecast:')
+    print(forecast_set)
+    return df, temp_df
 
-print(temp_df.iloc[-1].Date)
-last_date = datetime.strptime(temp_df.iloc[-1].Date, '%Y-%m-%d')
-last_unix = last_date.timestamp()
-one_day = 86400
-next_unix = last_unix +one_day
+def plot_forecast(df, temp_df):
+    df['Forecast'] = np.nan
+    print(temp_df.iloc[-1])
+    last_date = datetime.strptime(temp_df.iloc[-1].Date, '%Y-%m-%d')
+    last_unix = last_date.timestamp()
+    one_day = 86400
+    next_unix = last_unix +one_day
 
-for i in forecast_set:
-    next_date = datetime.fromtimestamp(next_unix)
-    next_unix += one_day
-    df.loc[next_date] = [np.nan for _ in range(len(df.columns)-1)] + [i]
+    for i in forecast_set:
+        next_date = datetime.fromtimestamp(next_unix)
+        next_unix += one_day
+        df.loc[next_date] = [np.nan for _ in range(len(df.columns)-1)] + [i]
+    df['GBP'].plot()
+    df['Forecast'].plot()
+    plt.legend(loc=4)
+    plt.xlabel('Date')
+    plt.ylabel('Price')
+    plt.show()
 
-df['GBP'].plot()
-df['Forecast'].plot()
-plt.legend(loc=4)
-plt.xlabel('Date')
-plt.ylabel('Price')
-plt.show()
+def main():
+    df, temp_df = forecast('GBP')
+    plot_forecast(df, temp_df)
+
+if __name__ == "__main__":
+    main()
