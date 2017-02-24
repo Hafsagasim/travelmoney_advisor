@@ -7,8 +7,18 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 from datetime import datetime
 import pickle
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
 
 style.use('ggplot')
+
+currencies = {
+                'USD' : 'BOE/XUDLBK35',
+                'GBP' : 'BOE/XUDLBK33',
+                'EUR' : 'BOE/XUDLBK34',
+                'PLN' : 'BOE/XUDLBK47'
+            }
 
 ######################
 #  Data preparation  #
@@ -17,7 +27,6 @@ def creation_date(path_to_file):
     """
     Try to get the date that a file was created, falling back to when it was
     last modified if that isn't possible.
-    See http://stackoverflow.com/a/39501288/1709587 for explanation.
     """
     if platform.system() == 'Windows':
         return os.path.getctime(path_to_file)
@@ -31,12 +40,7 @@ def creation_date(path_to_file):
             return stat.st_mtime
 
 def download_data(currency, save = False ):
-    if currency == 'USD':
-        df = quandl.get('BOE/XUDLBK35')
-    if currency == 'GBP':
-        df = quandl.get('BOE/XUDLBK33')
-    if currency == 'EUR':
-        df = quandl.get('BOE/XUDLBK34')
+    df = quandl.get(currencies[currency])
 
     #df = pd.concat([dfUSD, dfEUR], axis=1)
    # df = pd.concat([df, dfGBP], axis=1)
@@ -57,9 +61,25 @@ def load_data(filename):
         download_data()
     return pd.read_csv(filename, sep='\t')
 
-def forecast(currency, days=7, saveclf = False):
+@app.route("/currencies", methods=['GET'])
+def get_currencies():
+    return jsonify(currencies)
+
+#expecting : { 'currency' : 'EUR', 'days':5} format
+@app.route("/forecast", methods=['POST', 'GET'])
+def forecast():
+
+    if not request.json or not 'currency' in request.json:
+        abort(4)
+    currency = request.json['currency']
+    forecast_out = int(request.json['days'])
+
     df = download_data(currency)
-    temp_df = download_data(currency)
+    #temp_df = df
+    #temp_df = download_data(currency)
+
+    print('Last known rate:')
+    print(df.iloc[-1])
 
     df = df[[currency]]
 
@@ -67,7 +87,6 @@ def forecast(currency, days=7, saveclf = False):
     forecast_col = currency
     df.fillna(-99999, inplace = True)
     #how many days to forecast for
-    forecast_out = days
 
     df['label'] = df[forecast_col].shift(-forecast_out)
 
@@ -88,9 +107,9 @@ def forecast(currency, days=7, saveclf = False):
     scores = cross_validation.cross_val_score(clf, x, y, cv=5)
 
     #saving classsifier after training
-    if saveclf:
-        with open('linreg_currency.pickle','wb') as f:
-            pickle.dump(clf,f)
+    #if saveclf:
+    #    with open('linreg_currency.pickle','wb') as f:
+    #        pickle.dump(clf,f)
 
     #load the classifier:
     #pickle_in = open('linreg_currency.pickle','rb')
@@ -99,14 +118,22 @@ def forecast(currency, days=7, saveclf = False):
     #accuracy = clf.score(x_test, y_test)
 
     forecast_set = clf.predict(x_lately)
-    print('The forecast is for ' + str(forecast_out) + ' days.')
+    #print('The forecast is for ' + str(forecast_out) + ' days.')
 
-    print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
-    print('The forecast:')
-    print(forecast_set)
-    return df, temp_df
+    #print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+    #print('The forecast:')
+    #print(forecast_set)
 
-def plot_forecast(df, temp_df):
+    response = {
+        'accuracy': scores.mean(),
+        'forecasts' : str(forecast_set)
+    }
+
+    #return jsonify(scores.mean()), 201
+    return jsonify(response), 201
+
+def plot_forecast(currency, df):
+    temp_df = download_data(currency)
     df['Forecast'] = np.nan
     print(temp_df.iloc[-1])
     last_date = datetime.strptime(temp_df.iloc[-1].Date, '%Y-%m-%d')
@@ -118,7 +145,7 @@ def plot_forecast(df, temp_df):
         next_date = datetime.fromtimestamp(next_unix)
         next_unix += one_day
         df.loc[next_date] = [np.nan for _ in range(len(df.columns)-1)] + [i]
-    df['GBP'].plot()
+    df[currency].plot()
     df['Forecast'].plot()
     plt.legend(loc=4)
     plt.xlabel('Date')
@@ -126,8 +153,9 @@ def plot_forecast(df, temp_df):
     plt.show()
 
 def main():
-    df, temp_df = forecast('GBP')
-    plot_forecast(df, temp_df)
+    df = forecast('USD')
+    #plot_forecast('USD', df)
 
 if __name__ == "__main__":
-    main()
+    #main()
+    app.run()
