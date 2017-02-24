@@ -78,8 +78,8 @@ def forecast():
     #temp_df = df
     #temp_df = download_data(currency)
 
-    print('Last known rate:')
-    print(df.iloc[-1])
+    #print('Last known rate:')
+    #print(df.iloc[-1])
 
     df = df[[currency]]
 
@@ -125,11 +125,12 @@ def forecast():
     #print(forecast_set)
 
     response = {
-        'accuracy': scores.mean(),
+        'lastknownrate': str(df.iloc[-1]['label']),
+        'accuracy': str(scores.mean()),
+        'deviation' :  str(scores.std() * 2),
         'forecasts' : str(forecast_set)
     }
 
-    #return jsonify(scores.mean()), 201
     return jsonify(response), 201
 
 def plot_forecast(currency, df):
