@@ -59,19 +59,21 @@ def load_data(currency, save = False, silent = True, refresh_interval = 1):
         download_data(currency, save, silent)
     return pd.read_csv(filename, sep='\t')
 
-def lin_reg_predict(currency, days_out, saveds = False,saveclf = False, silent = True, cache = True,retrain = False, refresh_interval = 1):
+def lin_reg_predict(currency, forecast_out, save_ds = False,savemodel = False, silent = True, cache = True,
+                    train_a_lot = 1, retrain = False, refresh_interval = 1,):
     '''
     Function to predict out future currency rates.
     :param currency: the currency we want prediction for.
-    :param days_out: the number of days we want the prediction for.
-    :param saveds: triggers cacheing of newly downloaded dataset.
-    :param saveclf: triggers saving the classifier.
+    :param forecast_out: the number of days we want the prediction for.
+    :param save_ds: triggers cacheing of newly downloaded dataset.
+    :param savemodel: triggers saving the classifier.
     :param silent: turns logging to stdout on.
     :param cache: use load instead of download
+    :param retrain: forces the retrain of the model
     :param refresh_interval: refresh interval in days of the dataset if cacheing is on
     :return:
     '''
-    df = load_data(currency, save, silent, refresh_interval) if cache else download_data(currency, save, silent)
+    df = load_data(currency, save_ds, silent, refresh_interval) if cache else download_data(currency, save_ds, silent)
 
     df = df[[currency]]
 
@@ -79,7 +81,6 @@ def lin_reg_predict(currency, days_out, saveds = False,saveclf = False, silent =
     forecast_col = currency
     df.fillna(-99999, inplace = True)
     #how many days to forecast for
-
     df['label'] = df[forecast_col].shift(-forecast_out)
 
     df = df [[currency,'label',]]
@@ -96,7 +97,8 @@ def lin_reg_predict(currency, days_out, saveds = False,saveclf = False, silent =
     clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
 
     clf.fit(x_train, y_train)
-    scores = cross_validation.cross_val_score(clf, x, y, cv=5)
+    scores = cross_validation.cross_val_score(clf, x, y, scoring='mean_squared_error', cv=loo,)
+
 
     #saving classsifier after training
     #if saveclf:

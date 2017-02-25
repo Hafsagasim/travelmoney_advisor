@@ -104,8 +104,8 @@ def forecast():
     clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
 
     clf.fit(x_train, y_train)
-    scores = cross_validation.cross_val_score(clf, x, y, cv=5)
-
+    #scores = cross_validation.cross_val_score(clf, x, y, cv=5)
+    scores = clf.score(x_test, y_test)
     #saving classsifier after training
     #if saveclf:
     #    with open('linreg_currency.pickle','wb') as f:
@@ -126,7 +126,7 @@ def forecast():
 
     response = {
         'lastknownrate': str(df.iloc[-1]['label']),
-        'accuracy': str(scores.mean()),
+        'accuracy': str(scores),
         'deviation' :  str(scores.std() * 2),
         'forecasts' : str(forecast_set)
     }
