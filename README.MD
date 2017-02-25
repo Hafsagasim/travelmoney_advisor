@@ -1,2 +1,22 @@
-Program using machine learning to predict currency exchange rate.
-At the moment it is set to Hungarian Forint.
+# Travel money advisor API
+##  using machine learning to predict currency exchange rate
+
+## Endpoints:
+### Available currencies:
+* GET /currencies
+
+###Forecast a specific CURRENCY for X days:
+* POST /forecast
+	expected JSON format : 
+	{ 
+	"currency" : "CURRENCY",
+    "days": X
+    }
+* Example response:
+	{
+	 'lasknownrate': '307.75', 
+	 'forecasts': '[ 307.88528343  308.23194486  307.96452032  308.14280335  307.8654742 ]', 
+	 'accuracy': '0.975319053163'
+	 }
+	 
+[Will be hosted here:](laszlo.szoboszlai.me "Laszlo's page")
