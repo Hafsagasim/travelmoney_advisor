@@ -1,5 +1,11 @@
 # Travel money advisor API
-##  using machine learning to predict currency exchange rate
+## Using machine learning to predict currency exchange rate
+
+## Currently available rates:
+				..*'USD' : USD/HUF
+                ..*'GBP' : GBP/HUF
+                ..*'EUR' : EUR/HUF
+                ..*'PLN' : GBP/PLN
 
 ## Endpoints:
 ### Available currencies:
