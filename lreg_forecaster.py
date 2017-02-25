@@ -8,6 +8,13 @@ from matplotlib import style
 from datetime import datetime
 import pickle
 
+currencies = {
+                'USD' : 'BOE/XUDLBK35',
+                'GBP' : 'BOE/XUDLBK33',
+                'EUR' : 'BOE/XUDLBK34',
+                'PLN' : 'BOE/XUDLBK47'
+            }
+
 def creation_date(path_to_file):
     """
     Try to get the date that a file was created, falling back to when it was
@@ -70,6 +77,7 @@ def lin_reg_predict(currency, forecast_out, save_ds = False,savemodel = False, s
     :param silent: turns logging to stdout on.
     :param cache: use load instead of download
     :param retrain: forces the retrain of the model
+    :param train_a_lot: number of times it trains the model to get best performing one
     :param refresh_interval: refresh interval in days of the dataset if cacheing is on
     :return:
     '''
@@ -93,36 +101,60 @@ def lin_reg_predict(currency, forecast_out, save_ds = False,savemodel = False, s
     df.dropna(inplace = True)
     y = np.array(df['label'])
 
-    x_train, x_test, y_train, y_test = cross_validation.train_test_split(x,y, test_size=0.2, random_state=0)
-    clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
+    currency_file = 'linreg_' + currency + '.pickle'
+    #the model needs saving if the model for currency does not exist
+    needs_saving = not os.path.isfile('./' + currency_file) or savemodel
 
-    clf.fit(x_train, y_train)
-    scores = cross_validation.cross_val_score(clf, x, y, scoring='mean_squared_error', cv=loo,)
+    if needs_saving or retrain:
+        #if retrain is triggered the minimum training = 10
+        if retrain:
+            train_a_lot = max(10, train_a_lot)
+        scores = {}
+        #train the classifier train_a_lot times (default = 1), and chose the optimal to be the model
+        # for train in train_a_lot:
+        x_train, x_test, y_train, y_test = cross_validation.train_test_split(x,y, test_size=0.2, random_state=0)
+        clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
+        clf.fit(x_train, y_train)
+        #scores[( cross_validation.cross_val_score(clf, x, y, scoring='mean_squared_error', cv=loo,))] = clf
+        scores [clf.score(x_test, y_test).mean()] = clf
+        if not silent:
+            print('Training the model ' + str(train_a_lot) + ' time(s).')
+        score =  max(scores)
+        model = max(scores, key=scores.get)
+    else:
+        if not silent:
+            print('Loading model from file.')
+        pickle_in = open(currency_file,'rb')
+        model = pickle.load(pickle_in)
 
 
-    #saving classsifier after training
-    #if saveclf:
-    #    with open('linreg_currency.pickle','wb') as f:
-    #        pickle.dump(clf,f)
+    #save the best model after training
+    if needs_saving:
+        with open(currency_file,'wb') as f:
+            pickle.dump(model,f)
+        if not silent:
+            print('Model saved as : ' + currency_file)
 
-    #load the classifier:
-    #pickle_in = open('linreg_currency.pickle','rb')
-    #clf = pickle.load(pickle_in)
-
-    #accuracy = clf.score(x_test, y_test)
-
+    if not silent:
+        print('Creating forecast.')
     forecast_set = clf.predict(x_lately)
-    #print('The forecast is for ' + str(forecast_out) + ' days.')
 
-    #print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
-    #print('The forecast:')
-    #print(forecast_set)
+    if not silent:
+        print('Generating response.')
 
-    response = {
-        'lastknownrate': str(df.iloc[-1]['label']),
-        'accuracy': str(scores.mean()),
-        'deviation' :  str(scores.std() * 2),
-        'forecasts' : str(forecast_set)
-    }
+    lastknownrate = str(df.iloc[-1]['label'])
+    accuracy = str(score)
+    forecasts = str(forecast_set)
 
-    return jsonify(response), 201
+    return {'lasknownrate' : lastknownrate,
+            'accuracy' : accuracy,
+            'forecasts' : forecasts}
+def main():
+    currency = 'EUR'
+    forecast_out = 5
+    prediction = lin_reg_predict(currency, forecast_out, save_ds=True, savemodel=True, silent=False, cache=False,
+                    train_a_lot=10, retrain=False, refresh_interval=1)
+    print(prediction)
+
+if __name__ == "__main__":
+    main()
