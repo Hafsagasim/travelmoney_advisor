@@ -25,4 +25,4 @@
 	 'accuracy': '0.975319053163'
 	 }
 	 
-[Will be hosted here:](laszlo.szoboszlai.me:5000 "Laszlo's page")
+[Will be hosted here:](http://laszlo.szoboszlai.me:5000 "Laszlo's page")
