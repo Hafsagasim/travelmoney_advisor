@@ -112,13 +112,16 @@ def lin_reg_predict(currency, forecast_out, save_ds = False,savemodel = False, s
         scores = {}
         #train the classifier train_a_lot times (default = 1), and chose the optimal to be the model
         # for train in train_a_lot:
-        x_train, x_test, y_train, y_test = cross_validation.train_test_split(x,y, test_size=0.2, random_state=0)
-        clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
-        clf.fit(x_train, y_train)
-        #scores[( cross_validation.cross_val_score(clf, x, y, scoring='mean_squared_error', cv=loo,))] = clf
-        scores [clf.score(x_test, y_test).mean()] = clf
         if not silent:
             print('Training the model ' + str(train_a_lot) + ' time(s).')
+        for i in range(train_a_lot):
+            x_train, x_test, y_train, y_test = cross_validation.train_test_split(x,y, test_size=0.2, random_state=0)
+            clf = LinearRegression(n_jobs= -1) #n_jobs makes it threaded -1 as many as possible
+            clf.fit(x_train, y_train)
+            #scores[( cross_validation.cross_val_score(clf, x, y, scoring='mean_squared_error', cv=loo,))] = clf
+            scores [clf.score(x_test, y_test).mean()] = clf
+        if not silent:
+            print('The accuracies: ' + str(scores.keys()))
         score =  max(scores)
         model = max(scores, key=scores.get)
     else:

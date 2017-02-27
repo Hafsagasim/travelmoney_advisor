@@ -1,0 +1,13 @@
+#forecast{
+    margin-top: 50px;
+}
+.navbar-fixed-bottom{
+    color: darkslateblue;
+    text-align: center;
+    vertical-align: middle;
+    font-family: ‘Book Antiqua’,‘Palatino Linotype’, Palatino, serif;
+    background-color: lightskyblue;
+    background-size:cover;
+    background-position:center;
+    width:100%;
+}
