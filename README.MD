@@ -9,7 +9,8 @@
 
 ## Endpoints:
 ### Available currencies:
-* GET /currencies
+* GET /currencies   
+[Endpoint: http://laszlo.szoboszlai.me:5000/currencies](http://laszlo.szoboszlai.me:5000/currencies "Link to endpoint")
 
 ###Forecast a specific CURRENCY for X days:
 * POST /forecast
@@ -24,5 +25,6 @@
 	 'forecasts': '[ 307.88528343  308.23194486  307.96452032  308.14280335  307.8654742 ]', 
 	 'accuracy': '0.975319053163'
 	 }
-	 
-[Will be hosted here:](http://laszlo.szoboszlai.me:5000 "Laszlo's page")
+	
+[Endpoint: http://laszlo.szoboszlai.me:5000/forecast](http://laszlo.szoboszlai.me:5000/forecast "Link to endpoint")
+
