@@ -51,10 +51,8 @@ def crossdomain(origin=None, methods=None, headers=None,
 @app.route("/currencies", methods=['GET'])
 @crossdomain(origin='*')
 def get_currencies():
-    resp = make_response(jsonify(fc.currencies), 200)
-    resp.headers['mimetype'] = 'application/json'
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    return resp
+   return jsonify(fc.currencies), 200
+
 
 #expecting : { "currency" : "EUR", "days": 5} format
 @app.route("/forecast", methods=['POST', 'GET'])
@@ -64,12 +62,8 @@ def call_forecaster():
         abort(4)
     currency = request.json['currency']
     forecast_out = int(request.json['days'])
-    resp = make_response(jsonify(fc.lin_reg_predict(currency, forecast_out, save_ds = True,savemodel = True, silent = False, cache = False,
-                    train_a_lot = 1, retrain = False, refresh_interval = 1)), 201)
-    resp.headers['mimetype'] = 'application/json'
-    return resp
-
-
+    return jsonify(fc.lin_reg_predict(currency, forecast_out, save_ds = True,savemodel = True, silent = False, cache = False,
+                    train_a_lot = 1, retrain = False, refresh_interval = 1)), 201
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
