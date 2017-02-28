@@ -19,8 +19,6 @@ $(function(){
 });
 
 $("#forecast").click(function(){
-
-
 var settings = {
     "async": true,
     "crossDomain": true,
@@ -34,10 +32,10 @@ var settings = {
 
     },
     "processData": false,
-    "data": "{ \n  \"currency\" : \"EUR\",\n    \"days\": 5\n}"
 }
 
 $.ajax(settings).done(function (response) {
-    console.log(response);
+    console.log('pressed');
+    //console.log(response);
 });
 });
