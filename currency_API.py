@@ -6,6 +6,7 @@ from functools import update_wrapper
 
 app = Flask(__name__)
 
+'''
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
                 automatic_options=True):
@@ -46,24 +47,32 @@ def crossdomain(origin=None, methods=None, headers=None,
         f.provide_automatic_options = False
         return update_wrapper(wrapped_function, f)
     return decorator
+'''
 
 #return the available currencies
 @app.route("/currencies", methods=['GET'])
-@crossdomain(origin='*')
+#@crossdomain(origin='*')
 def get_currencies():
-   return jsonify(fc.currencies), 200
+    response = jsonify(fc.currencies), 200
+    response = make_response(response)
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    return response
+
+ #expecting : { "currency" : "EUR", "days": 5} format
+ @app.route("/forecast", methods=['POST', 'GET'])
+ #@crossdomain(origin='*')
+ def call_forecaster():
+     if not request.json or not 'currency' in request.json:
+         abort(4)
+     currency = request.json['currency']
+     forecast_out = int(request.json['days'])
+
+     response = jsonify(fc.lin_reg_predict(currency, forecast_out, save_ds=True, savemodel=True, silent=False, cache=False,
+                                       train_a_lot=1, retrain=False, refresh_interval=1)), 201
+     response = make_response(response)
+     response.headers['Access-Control-Allow-Origin'] = "*"
+     return response
 
 
-#expecting : { "currency" : "EUR", "days": 5} format
-@app.route("/forecast", methods=['POST', 'GET'])
-@crossdomain(origin='*')
-def call_forecaster():
-    if not request.json or not 'currency' in request.json:
-        abort(4)
-    currency = request.json['currency']
-    forecast_out = int(request.json['days'])
-    return jsonify(fc.lin_reg_predict(currency, forecast_out, save_ds = True,savemodel = True, silent = False, cache = False,
-                    train_a_lot = 1, retrain = False, refresh_interval = 1)), 201
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+ if __name__ == "__main__":
+     app.run(host='0.0.0.0')
