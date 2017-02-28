@@ -3,8 +3,10 @@ import lreg_forecaster as fc
 from datetime import timedelta
 from flask import Flask, jsonify, request, Response, make_response,  current_app
 from functools import update_wrapper
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources=r'/api/*')
 
 #return the available currencies
 @app.route("/currencies", methods=['GET'])
