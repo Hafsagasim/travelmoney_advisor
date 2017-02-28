@@ -58,10 +58,9 @@ def get_currencies():
     response.headers['Access-Control-Allow-Origin'] = "*"
     return response
 
- #expecting : { "currency" : "EUR", "days": 5} format
- @app.route("/forecast", methods=['POST', 'GET'])
- #@crossdomain(origin='*')
- def call_forecaster():
+#expecting : { "currency" : "EUR", "days": 5} format
+@app.route("/forecast", methods=['POST', 'GET'])
+def call_forecaster():
      if not request.json or not 'currency' in request.json:
          abort(4)
      currency = request.json['currency']
