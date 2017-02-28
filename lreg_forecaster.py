@@ -12,8 +12,9 @@ currencies = {
                 'USD' : 'BOE/XUDLBK35',
                 'GBP' : 'BOE/XUDLBK33',
                 'EUR' : 'BOE/XUDLBK34',
-                'PLN' : 'BOE/XUDLBK47'
-            }
+                'PLN' : 'BOE/XUDLBK47',
+                'BGN' : 'BOE/EURBGN'
+             }
 
 def creation_date(path_to_file):
     """

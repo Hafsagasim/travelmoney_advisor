@@ -22,16 +22,15 @@ $("#forecast").click(function(){
 var settings = {
   "async": true,
   "crossDomain": true,
-
-  "url": "http://laszloszoboszlai.me:5000/currencies",
-  "method": "GET",
+  "url": "http://laszloszoboszlai.me:5000/forecast",
+  "method": "POST",
   "headers": {
     "content-type": "application/json",
     "cache-control": "no-cache",
-    "postman-token": "6f2090a9-f224-daf7-966e-1f6a90c2e79b"
+    "postman-token": "ebbeb938-9183-726c-f27e-96ffba2921cc"
   },
-  "processData": true,
-  "data": "{ \n  \"currency\" : \"EUR\",\n    \"days\": 5\n}"
+  "processData": false,
+  "data": "{\n \"currency\":\"EUR\",\n \"days\":\"5\"\n}"
 }
 
 $.ajax(settings).done(function (response) {
