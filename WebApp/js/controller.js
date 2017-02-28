@@ -22,7 +22,7 @@ $("#forecast").click(function(){
 var settings = {
   "async": true,
   "crossDomain": true,
-   "Access-Control-Allow-Origin" : "http://laszloszoboszlai.me",
+
   "url": "http://laszloszoboszlai.me:5000/currencies",
   "method": "GET",
   "headers": {

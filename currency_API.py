@@ -6,7 +6,7 @@ from functools import update_wrapper
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources=r'/api/*')
+CORS(app)
 
 #return the available currencies
 @app.route("/currencies", methods=['GET'])
