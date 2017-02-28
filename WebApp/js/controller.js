@@ -17,3 +17,27 @@ $(function(){
 
     });
 });
+
+$("#forecast").click(function(){
+
+
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "dataType": "jsonp",
+    "url": "http://laszloszoboszlai.me:5000/currencies",
+    "method": "GET",
+    "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-cache",
+        "postman-token": "75c24597-c75d-5632-351f-9919f68e0bce"
+
+    },
+    "processData": false,
+    "data": "{ \n  \"currency\" : \"EUR\",\n    \"days\": 5\n}"
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+});
