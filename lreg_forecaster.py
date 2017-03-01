@@ -80,7 +80,7 @@ def lin_reg_predict(currency, forecast_out, save_ds = False,savemodel = False, s
     :param retrain: forces the retrain of the model
     :param train_a_lot: number of times it trains the model to get best performing one
     :param refresh_interval: refresh interval in days of the dataset if cacheing is on
-    :return:
+    :return:predicted currency rates for "forecast_out" number of days
     '''
     df = load_data(currency, save_ds, silent, refresh_interval) if cache else download_data(currency, save_ds, silent)
 

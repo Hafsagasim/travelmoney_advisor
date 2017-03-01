@@ -8,9 +8,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-#return the available currencies
+
+
+
 @app.route("/currencies", methods=['GET'])
 def get_currencies():
+    """returns the available currencies"""
     response = jsonify(fc.currencies), 200
     response = make_response(response)
     response.headers['Access-Control-Allow-Origin'] = "*"
@@ -20,10 +23,16 @@ def get_currencies():
 #expecting : { "currency" : "EUR", "days": 5} format
 @app.route("/forecast", methods=['POST', 'GET'])
 def call_forecaster():
+    """Returns forecast for a specific currency for given number of days. (default 5 days)"""
     if not request.json or not 'currency' in request.json:
-        abort(4)
+        response = jsonify({"error" : "Bad request", "code": "400", "message" : "No currency name or bad format."}, 400)
+        make_response(response)
+        return response
+
+    forecast_out = 5
+    if 'days' in request.json:
+        forecast_out = int(request.json['days'])
     currency = request.json['currency']
-    forecast_out = int(request.json['days'])
 
     response = jsonify(fc.lin_reg_predict(currency, forecast_out, save_ds=True, savemodel=True, silent=False, cache=False,
                                        train_a_lot=1, retrain=False, refresh_interval=1)), 201
