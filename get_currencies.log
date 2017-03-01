@@ -1,0 +1,36 @@
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:25:54] "GET /currencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:26:39] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:29:52] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:30:35] "GET /currencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:30:42] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK34/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:32:15] "POST /forecast HTTP/1.1" 201 -
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK34/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:33:03] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:33:04] "GET /currencies HTTP/1.1" 200 -
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK34/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 06:33:10] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK34/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 07:45:41] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 07:47:09] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 07:48:26] "POST /forecast HTTP/1.1" 201 -
+INFO:root:So should this
+WARNING:root:And this, too
+INFO:root:So should this
+WARNING:root:And this, too
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [01/Mar/2017 07:52:01] "POST /forecast HTTP/1.1" 201 -
+INFO:root:So should this
+WARNING:root:And this, too
+INFO:root:So should this
+WARNING:root:And this, too

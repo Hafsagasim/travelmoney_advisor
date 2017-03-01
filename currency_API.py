@@ -4,16 +4,32 @@ from datetime import timedelta
 from flask import Flask, jsonify, request, Response, make_response,  current_app
 from functools import update_wrapper
 from flask_cors import CORS
+import logging
+
 
 app = Flask(__name__)
 CORS(app)
 
-
-
+logging.basicConfig(filename='api.log', level=logging.DEBUG)
+#
+# def logger(original):
+#     import logging
+#     logging.basicConfig(filename='{}.log'.format(original.__name__), level=logging.INFO)
+#
+#     def wrapper(*args, **kwargs):
+#         logging.info(
+#             #'Ran by {} data:{} with args: {}, and kwargs: {}'.format(request.remote_addr,request.json, args, kwargs)
+#             'hghfhgfhdgfdgddgd'
+#         )
+#         return original(*args, **kwargs)
+#     return wrapper
 
 @app.route("/currencies", methods=['GET'])
 def get_currencies():
     """returns the available currencies"""
+    logging.info(
+          'Ran by {} data:{}'.format(request.remote_addr,request.json)
+    )
     response = jsonify(fc.currencies), 200
     response = make_response(response)
     response.headers['Access-Control-Allow-Origin'] = "*"
@@ -24,6 +40,11 @@ def get_currencies():
 @app.route("/forecast", methods=['POST', 'GET'])
 def call_forecaster():
     """Returns forecast for a specific currency for given number of days. (default 5 days)"""
+
+    logging.info(
+        'Ran by {} data:{}'.format(request.remote_addr, request.json)
+    )
+
     if not request.json or not 'currency' in request.json:
         response = jsonify({"error" : "Bad request", "code": "400", "message" : "No currency name or bad format."}, 400)
         make_response(response)
@@ -40,7 +61,6 @@ def call_forecaster():
     response.headers['Access-Control-Allow-Origin'] = "*"
     response.headers['content-type'] = "application/json"
     return response
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
