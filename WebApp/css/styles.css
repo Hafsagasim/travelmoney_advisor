@@ -1,5 +1,6 @@
 #forecast{
-    margin-top: 50px;
+    margin-top: 20px;
+    width: 200px;
 }
 .navbar-fixed-bottom{
     color: darkslateblue;
@@ -10,4 +11,9 @@
     background-size:cover;
     background-position:center;
     width:100%;
+}
+
+.dropdown-toggle{
+    margin-top: 12px;
+    width: 200px;
 }
