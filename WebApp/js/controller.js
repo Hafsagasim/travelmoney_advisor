@@ -81,10 +81,17 @@ $("#forecast").click(function(){
 
  //settings.add( ['data'] = "{currency: "+ curr + ",  days: " + days + "}" );
 $.ajax(settings).done(function (response) {
-  console.log(days);
+    var data = response['forecasts'];
+   // data = data.substring(2);
+   // data = data.split(" ");
+   // data =  JSON.parse(data);
+    console.log(data);
 
-    $("#result").text(response['forecasts']);
+    $("#result").text(data);
     $("#result").fadeIn();
+
+    $.plot($("#placeholder"), data , { yaxis: { max: 400 } });
+
 });
 
 
