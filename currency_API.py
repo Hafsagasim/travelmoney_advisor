@@ -36,6 +36,23 @@ def get_currencies():
     response.headers['content-type'] = "application/json"
     return response
 
+@app.route("/tocurrencies", methods=['POST'])
+def to_currencies():
+    logging.info(
+        'Ran by {} data:{}'.format(request.remote_addr, request.json)
+    )
+    if not request.json or not 'currency' in request.json:
+        response = jsonify({"error" : "Bad request", "code": "400", "message" : "No currency name or bad format."}, 400)
+        make_response(response)
+        return response
+    currency = request.json['currency']
+
+    response = jsonify(fc.currencies[currency]), 200
+    response = make_response(response)
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    response.headers['content-type'] = "application/json"
+    return response
+
 #expecting : { "currency" : "EUR", "days": 5} format
 @app.route("/forecast", methods=['POST', 'GET'])
 def call_forecaster():
