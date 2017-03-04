@@ -2,6 +2,26 @@
     margin-top: 20px;
     width: 200px;
 }
+
+#progressbar{
+    margin-top: 10px;
+    margin-left: 10%;
+	width: 80%;
+	background-color: #ddd;
+}
+
+#bar{
+	width: 10%;
+	height: 30px;
+	background-color: #4cae4c;
+	text-align: center;
+	line-height: 30px;
+	color: white;
+}
+
+#result{
+    margin-top: 10px;
+}
 .navbar-fixed-bottom{
     color: darkslateblue;
     text-align: center;
@@ -17,3 +37,6 @@
     margin-top: 12px;
     width: 200px;
 }
+
+
+

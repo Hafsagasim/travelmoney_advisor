@@ -53,16 +53,15 @@ def to_currencies():
     response.headers['content-type'] = "application/json"
     return response
 
-#expecting : { "currency" : "EUR", "days": 5} format
+#expecting : { "currencyfrom" : "EUR", "currencyto" : "HUF", "days": 5} format
 @app.route("/forecast", methods=['POST', 'GET'])
 def call_forecaster():
     """Returns forecast for a specific currency for given number of days. (default 5 days)"""
-
     logging.info(
         'Ran by {} data:{}'.format(request.remote_addr, request.json)
     )
 
-    if not request.json or not 'currency' in request.json:
+    if not request.json or not 'currencyfrom' in request.json or not 'currencyto' in request.json:
         response = jsonify({"error" : "Bad request", "code": "400", "message" : "No currency name or bad format."}, 400)
         make_response(response)
         return response
@@ -70,9 +69,10 @@ def call_forecaster():
     forecast_out = 5
     if 'days' in request.json:
         forecast_out = int(request.json['days'])
-    currency = request.json['currency']
+    currencyfrom = request.json['currencyfrom']
+    currencyto = request.json['currencyto']
 
-    response = jsonify(fc.lin_reg_predict(currency, forecast_out, save_ds=True, savemodel=True, silent=False, cache=False,
+    response = jsonify(fc.lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds=True, savemodel=True, silent=False, cache=False,
                                        train_a_lot=1, retrain=False, refresh_interval=1)), 201
     response = make_response(response)
     response.headers['Access-Control-Allow-Origin'] = "*"

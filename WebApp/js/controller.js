@@ -1,12 +1,21 @@
 /**
  * Created by Laszlo Szoboszlai on 26/02/2017.
  */
+var currencies ={};
+var keys = [];
+var HOST = '127.0.0.1';
+var PORT = '5000';
+var URL = "http://" + HOST + ":" + PORT;
+
 $( document ).ready(function() {
     $("#result").hide();
+	$("#progressbar").hide();
+
+
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://laszloszoboszlai.me:5000/currencies",
+        "url": URL +"/currencies",
         "method": "GET",
         "headers": {
             "cache-control": "no-cache",
@@ -17,87 +26,92 @@ $( document ).ready(function() {
 
     $.ajax(settings).done(function (response) {
         for(var key in response){
-            $('#to').append( '<li><a href="#"><id=' + key + '">' + key + '</a></li>' );
             $('#from').append( '<li><a href="#"><id=' + key + '">' + key + '</a></li>' );
-            console.log(key);
         }
-
-        $(function(){
-            $("#to li a").click(function(){
-
-                $("#toDropdownMenu:first-child").text($(this).text());
-                $("#toDropdownMenu:first-child").val($(this).text());
-
-
-            });
-        });
-
-        $(function(){
 
             $("#from li a").click(function(){
                 $("#fromDropdownMenu:first-child").text($(this).text());
                 $("#fromDropdownMenu:first-child").val($(this).text());
+				$("#todr").empty();
+				
+                var curr = ($("#fromDropdownMenu:first-child").val())
+                var settings = {
+					"async": true,
+					"crossDomain": true,
+					"url": URL+ "/tocurrencies",
+					"method": "POST",
+					"headers": {
+						"content-type": "application/json",
+						"currency": "\""  + curr + "\"",
+						"cache-control": "no-cache",
+						"postman-token": "d71648ba-61f2-5293-e424-ec45e85ed4c7"
+						},
+					"processData": false,
+					"data": "{ \n  \"currency\" : \"" + curr + "\" \n}"
+				}
+
+                $.ajax(settings).done(function (response) {
+					for(var key2 in response){
+						$('#todr').append( '<li><a href="#"><id=' + key2 + '">' + key2 + '</a></li>' );
+
+						}
+                    $("#todr li a").click(function(){
+                        $("#toDropdownMenu:first-child").text($(this).text());
+                        $("#toDropdownMenu:first-child").val($(this).text());
+                    });
             });
         });
-        //console.log(response);
     });
-});
 
-/*
-$(function(){
-
-    $("#from li a").click(function(){
-        $("#fromDropdownMenu:first-child").text($(this).text());
-        $("#fromDropdownMenu:first-child").val($(this).text());
     });
-});
-*/
 
+function movebar(){
+	var elem = document.getElementById("bar");
+	var width = 1;
+	var id = setInterval(frame, 13);
+	
+	function frame(){
+		if (width>= 100){
+			clearInterval(id);
+		} else{
+				width++;
+				elem.style.width = width + '%';
+				elem.innerHTML = width * 1 + '%';
+			}
+	}
+}
 
 $("#days li a").click(function(){
-
     $("#daysDropdownMenu:first-child").text($(this).text());
     $("#daysDropdownMenu:first-child").val($(this).text());
-
-
 });
 
 $("#forecast").click(function(){
-    var curr = ($("#fromDropdownMenu:first-child").val())
-    var days = ($("#daysDropdownMenu:first-child").val())
+	$("#progressbar").show();
+	movebar();
+    var currfrom = ($("#fromDropdownMenu:first-child").val());
+	var currto = ($("#toDropdownMenu:first-child").val());
+    var days = ($("#daysDropdownMenu:first-child").val());
     var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://laszloszoboszlai.me:5000/forecast",
-  "method": "POST",
-  "headers": {
-    "content-type": "application/json",
-    "cache-control": "no-cache",
-    "postman-token": "d0134958-b639-0d25-f0a6-838ca556c7e9"
-  },
-  "processData": false,
-        "data": "{ \n  \"currency\" : \"" + curr + "\",\n    \"days\":"+days + "\n}"
-    }
+		"async": true,
+		"crossDomain": true,
+		"url": URL + "/forecast",
+		"method": "POST",
+		"headers": {
+			"content-type": "application/json",
+			"cache-control": "no-cache",
+			"postman-token": "d0134958-b639-0d25-f0a6-838ca556c7e9"
+			},
+		"processData": false,
+        "data": "{\n \"currencyfrom\": \"" + currfrom + "\",\n \"currencyto\": \"" + currto + "\",\n \"days\":"+days + "\n}"
+		}
 
- //settings.add( ['data'] = "{currency: "+ curr + ",  days: " + days + "}" );
-$.ajax(settings).done(function (response) {
-    var data = response['forecasts'];
-   // data = data.substring(2);
-   // data = data.split(" ");
-   // data =  JSON.parse(data);
-    console.log(data);
+	$.ajax(settings).done(function (response) {
+		var data = response['forecasts'];
 
-    $("#result").text(data);
-    $("#result").fadeIn();
+		$("#result").text(JSON.stringify(data));
+		$("#result").fadeIn();
 
-    $.plot($("#placeholder"), data , { yaxis: { max: 400 } });
-
-});
-
-
-//    if ($("#fromDropdownMenu:first-child").val() == "");
-//
-//   alert($("#fromDropdownMenu:first-child").val() + " " + $("#toDropdownMenu:first-child").val());
-//  console.log('forecast clicked');
-
+		//$.plot($("#placeholder"), data , { yaxis: { max: 400 } });
+		});
 });

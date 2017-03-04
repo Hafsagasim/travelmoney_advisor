@@ -1,0 +1,547 @@
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:root:Ran by 127.0.0.1 data:None
+ERROR:__main__:Exception on /currencies [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_cors\extension.py", line 188, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "currency_API.py", line 33, in get_currencies
+    response = jsonify(fc.currencies), 200
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\json.py", line 266, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\json.py", line 126, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "C:\Program Files\Anaconda3\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Program Files\Anaconda3\lib\json\encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "C:\Program Files\Anaconda3\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Program Files\Anaconda3\lib\json\encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "C:\Program Files\Anaconda3\lib\json\encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\json.py", line 83, in default
+    return _json.JSONEncoder.default(self, o)
+  File "C:\Program Files\Anaconda3\lib\json\encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: {'BOE/XUDLBK34'} is not JSON serializable
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:36:12] "GET /currencies HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:39:39] "GET /currencies HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:56:35] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:56:35] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:58:52] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:58:52] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:59:15] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 18:59:16] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:03:31] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:03:31] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:03:55] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:03:55] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:04:29] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:04:29] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:05:08] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:05:08] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:14:28] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:14:28] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:15:29] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:15:29] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:16:55] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:16:55] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:18:18] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:18:18] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:20:27] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:20:27] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:34:07] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:34:07] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:34:55] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:34:55] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:35:30] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:35:30] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:35:37] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:35:37] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:36:45] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:36:45] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:39:11] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:39:11] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:39:38] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:39:38] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:43:32] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:43:32] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:44:26] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:44:26] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:44:44] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:44:44] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:45:31] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:45:31] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:46:21] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:46:21] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:47:02] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:47:02] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:47:22] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:47:22] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:47:46] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:47:46] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:48:16] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:48:16] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:48:53] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:48:53] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:49:12] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:49:12] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:49:26] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:49:26] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:50:56] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:50:56] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:54:21] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 19:54:21] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:14:53] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:14:53] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:14:57] "OPTIONS /currencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:14:57] "POST /currencies HTTP/1.1" 405 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:15:43] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:15:43] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:15:49] "OPTIONS /currencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:15:49] "POST /currencies HTTP/1.1" 405 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:16:15] "POST /currencies HTTP/1.1" 405 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:16:42] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:17:22] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:17:22] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:17:25] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:17:25] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:17:32] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:17:32] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:19:00] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:22:27] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:24:35] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:25:59] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:25:59] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:01] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:01] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:11] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:11] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:15] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:15] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:55] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:55] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:57] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:26:57] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:27:18] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:27:18] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:27:21] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:27:21] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:28:44] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:28:44] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:28:46] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:28:46] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:29:33] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:29:33] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:29:35] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:29:35] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:19] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:19] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:29] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:29] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:45] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:45] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:47] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:30:47] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:32:39] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:32:39] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:33:00] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:33:00] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:33:30] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:33:30] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:14] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:14] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:16] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:16] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:23] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:23] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:28] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 20:34:28] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:23:49] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:23:49] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:23:52] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:23:52] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:24:15] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:24:15] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:24:18] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:25:16] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:25:16] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:25:19] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:25:19] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:26:14] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:26:14] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:26:16] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:26:16] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:27:14] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:28:00] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:28:00] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:28:02] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:28:02] "POST /tocurrencies HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:29:29] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:29:29] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:29:31] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:29:31] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:31:36] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:31:36] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:31:37] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Mar/2017 21:31:37] "POST /tocurrencies HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:46:51] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:46:51] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:47:11] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:47:11] "POST /tocurrencies HTTP/1.1" 400 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:10] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:10] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:14] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:14] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:27] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:27] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:33] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 01:48:33] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:54:50] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:54:50] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:54:53] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:54:53] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:59:27] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:59:27] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:59:52] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 02:59:52] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:01:04] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:01:04] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:01:23] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:01:23] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:01:48] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:01:48] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:02:11] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:02:11] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:02:48] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 03:02:48] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:45:08] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:45:08] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:50:56] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:50:56] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:02] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:03] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:40] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:40] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:42] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:42] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:47] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:47] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:52] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'USD'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:52] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:51:56] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:52:58] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:52:58] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:54:36] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:54:36] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:54:39] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:54:39] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:55:19] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:55:19] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:55:21] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:55:21] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:58:22] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:58:22] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:58:52] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:58:52] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:58:54] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:58:54] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:59:00] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'USD'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:59:00] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:59:48] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:59:49] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:59:50] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 05:59:50] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:00:34] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:00:35] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:00:37] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:00:37] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:01:41] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:01:41] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:01:42] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:01:42] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:02:26] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:02:26] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:02:28] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:02:28] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:02:30] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:03:09] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:03:09] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:03:11] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:03:11] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:23] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:23] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:25] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:25] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:57] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:57] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:59] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:04:59] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:07:31] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:07:31] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:07:34] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:07:34] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:38] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:38] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:39] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'USD'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:39] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:49] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:49] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:51] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:08:51] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:09] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:09] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:11] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:11] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:36] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:36] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:39] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:39] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:41] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:44] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:09:44] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:01] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:01] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:03] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:03] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:33] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:33] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:34] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:11:34] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:12:08] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:12:08] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:12:10] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:12:10] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:04] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:04] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:05] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:05] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:45] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:45] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:47] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:47] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:54] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:13:54] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:01] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:01] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:07] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:07] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:50] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:50] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:54] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:14:54] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:16:49] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:16:49] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:16:50] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:16:50] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:root:Ran by 127.0.0.1 data:{'days': '5', 'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:25:46] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'days': '5', 'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:26:06] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'days': '5', 'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:26:26] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:27:57] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:28:28] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:30:08] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:32:42] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:33:00] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:33:32] "POST /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:34:11] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:34:49] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:36:07] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:36:18] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:36:29] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyfrom': 'GBP', 'days': '5', 'currencyto': 'HUF'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK33/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 06:36:44] "POST /forecast HTTP/1.1" 201 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyfrom': 'GBP', 'days': '5', 'currencyto': 'HUF'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK33/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 08:09:36] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 08:09:56] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [04/Mar/2017 08:09:56] "POST /tocurrencies HTTP/1.1" 200 -

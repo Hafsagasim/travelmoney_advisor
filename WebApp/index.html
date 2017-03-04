@@ -40,7 +40,8 @@
         <span class="caret"></span>
     </button>
 
-    <ul class="dropdown-menu" id="to" aria-labelledby="toDropdownMenu">
+    <ul class="dropdown-menu" id="todr" aria-labelledby="toDropdownMenu">
+
     </ul>
 
 </div>
@@ -76,24 +77,25 @@
         </div>
     </div>
 
-    <div class=".col-lg-3 .col-lg-offset-3 center-block text-center">
-<button class="btn btn-info btn-lg" type="button" id="forecast">
-    Forecast
-</button>
-        <div id="result" class="alert alert-success">
+<div class=".col-lg-3 .col-lg-offset-3 center-block text-center">
+	<button class="btn btn-info btn-lg" type="button" id="forecast">
+		Forecast <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+	</button>
 
-        </div>
+	<div id="progressbar" >
+		<div id="bar">10%</div>
+	</div>	 
 
-    </div>
-
-
-    <div id="placeholder" style="width:600px;height:300px"></div>
+<!--placeholder for the result  -->
+	<div id="result" class="alert alert-success"></div>
 
 </div>
 
+<!--placeholder for the graph  -->
+<div id="placeholder" style="width:600px;height:300px"></div>
 
 
-
+</div>
 
 
 
