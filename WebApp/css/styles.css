@@ -33,6 +33,11 @@
     width:100%;
 }
 
+.danger{
+    background-color: #761c19;
+    color: #122b40;
+}
+
 .dropdown-toggle{
     margin-top: 12px;
     width: 200px;
