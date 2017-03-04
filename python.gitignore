@@ -10,6 +10,9 @@ __pycache__/
 #pickled stuff
 *.pickle
 
+# .log files
+*.log
+
 # C extensions
 *.so
 
