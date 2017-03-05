@@ -3,14 +3,13 @@
  */
 var currencies ={};
 var keys = [];
-var HOST = '127.0.0.1';
+var HOST = 'laszloszoboszlai.me';
 var PORT = '5000';
 var URL = "http://" + HOST + ":" + PORT;
 
 $( document ).ready(function() {
     $("#result").hide();
 	$("#progressbar").hide();
-
 
     var settings = {
         "async": true,
@@ -33,7 +32,9 @@ $( document ).ready(function() {
                 $("#fromDropdownMenu:first-child").text($(this).text());
                 $("#fromDropdownMenu:first-child").val($(this).text());
 				$("#todr").empty();
-				
+				$("#toDropdownMenu:first-child").text('Currency to');
+				$("#toDropdownMenu:first-child").val('');
+
                 var curr = ($("#fromDropdownMenu:first-child").val())
                 var settings = {
 					"async": true,

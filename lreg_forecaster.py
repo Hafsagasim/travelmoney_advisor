@@ -10,26 +10,30 @@ from datetime import timedelta
 import pickle
 import collections
 
-currencies2 = {
-                'USD' : 'BOE/XUDLBK35',
-                'GBP' : 'BOE/XUDLBK33',
-                'EUR' : 'BOE/XUDLBK34',
-                'PLN' : 'BOE/XUDLBK47',
-                'BGN' : 'BOE/EURBGN'
-             }
+#currencies2 = {
+  #              'USD' : 'BOE/XUDLBK35',
+   #             'GBP' : 'BOE/XUDLBK33',
+  #              'EUR' : 'BOE/XUDLBK34',
+   #             'PLN' : 'BOE/XUDLBK47',
+    #            'BGN' : 'BOE/EURBGN'
+    #         }
 
 currencies = {
             'USD' :{
-                        'HUF' : 'BOE/XUDLBK35'
+                        'HUF' : 'BOE/XUDLBK35',
+                        'PLN' : 'BOE/XUDLBK49',
+                        'GBP' : 'BOE/XUDLGBD'
                     },
             'GBP' :{
                         'HUF' : 'BOE/XUDLBK33',
-                        'PLN' : 'BOE/XUDLBK47',
-                        'BGN' : 'BOE/EURBGN'
+                        'PLN' : 'BOE/XUDLBK47'
                     },
             'EUR' :{
-                        'HUF' : 'BOE/XUDLBK34'
-                    }
+                        'HUF' : 'BOE/XUDLBK34',
+                        'BGN' : 'ECB/EURBGN',
+                        'PLN' : 'BOE/XUDLBK48',
+                        'GBP' : 'BOE/XUDLSER'
+}
 
     }
 
@@ -96,7 +100,7 @@ def load_data(currencyfrom, currencyto, save = False, silent = True, refresh_int
     #turn days into seconds
     refresh_interval = refresh_interval * 86400
     filename = currencyfrom + '_to_' + currencyto + '.csv'
-
+    print(bool(math.floor(((time.time() - creation_date(filename)) / refresh_interval ))))
     if bool(math.floor(((time.time() - creation_date(filename)) / refresh_interval ))):
         if not silent:
             print('Download of ' + filename + ' triggered.')
@@ -196,7 +200,7 @@ def main():
     currencyfrom = 'GBP'
     currencyto = 'HUF'
     forecast_out = 5
-    prediction = lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds=False, savemodel=True, silent=False, cache=False,
+    prediction = lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds=True, savemodel=True, silent=False, cache=True,
                     train_a_lot=1, retrain=False, refresh_interval=1)
     print(prediction)
 
