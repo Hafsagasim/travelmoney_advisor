@@ -38,13 +38,17 @@ currencies = {
     }
 
 def create_plottable(dates, values):
+    values = values.tolist()
+    mind = str(dates[values.index(min(values))])[:10]
+    maxd = str(dates[values.index(max(values))])[:10]
     arr = []
+
     for d,v in zip(dates, values):
         temp = {}
-        temp['x'] = int(str(d)[8:])
-        temp['y'] = v
+        temp['x'] = (d.timestamp() * 1000)
+        temp['y'] = round(v, 3)
         arr.append(temp)
-    return arr
+    return arr, mind, maxd
 
 def get_next_days(lastknownrate, no_of_days):
     SATURDAY = 5
@@ -58,9 +62,11 @@ def get_next_days(lastknownrate, no_of_days):
     while i<no_of_days:
         date_obj= date_obj + timedelta(days=1)
         if ((date_obj.weekday() != SATURDAY) & (date_obj.weekday() != SUNDAY)):
-            date = str(date_obj)
-            date = date[:10]
-            dates.append(date)
+
+            #date = str(date_obj)
+            #date = date[:10]
+            #dates.append(date)
+            dates.append(date_obj)
             i=i+1
     return dates
 
@@ -197,14 +203,17 @@ def lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds = False,save
 
     lastknownrate = str(df.iloc[-1])
     dates = get_next_days(lastknownrate, forecast_out)
-    forecasts = create_plottable(dates, forecast_set)
+    forecasts, minday, maxday = create_plottable(dates, forecast_set)
     lastknownrate = str(df.iloc[-1]['label'])
     accuracy = str(score)
     #sorted_forecasts = collections.OrderedDict(sorted(forecasts.items()))
     #print(forecasts['2017-03-07'])
     return {'lasknownrate' : lastknownrate,
             'accuracy' : accuracy,
-            'forecasts' : forecasts}
+            'forecasts' : forecasts,
+            'tosell' : maxday,
+            'tobuy' : minday
+            }
 def main():
     currencyfrom = 'GBP'
     currencyto = 'HUF'

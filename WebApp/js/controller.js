@@ -109,10 +109,8 @@ $("#forecast").click(function(){
 
 	$.ajax(settings).done(function (response) {
 		var data = response['forecasts'];
-		console.log(data);
-		$("#result").text(JSON.stringify(data));
-		//$("#result").fadeIn();
-
+		$("#result").text('According to the forecast the best day to buy is: ' + response['tobuy'] + ' and to sell is: ' + response['tosell']);
+		$("#result").fadeIn();
 
         Morris.Line({
             element: 'placeholder',
@@ -122,6 +120,5 @@ $("#forecast").click(function(){
             ykeys: ['y'],
             labels: ['value']
         });
-
 		});
 });

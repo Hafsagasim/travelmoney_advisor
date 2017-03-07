@@ -231,3 +231,264 @@ INFO:root:Ran by 127.0.0.1 data:{'days': 5, 'currencyfrom': 'EUR', 'currencyto':
 DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
 DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK34/data?order=asc HTTP/1.1" 200 None
 INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 08:16:50] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:14:48] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:14:48] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:14:51] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:14:51] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:14:55] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'days': 8, 'currencyfrom': 'GBP', 'currencyto': 'PLN'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK47/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:14:58] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:16:29] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:16:29] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:16:32] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:16:32] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:16:36] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyto': 'PLN', 'currencyfrom': 'GBP', 'days': 8}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK47/data?order=asc HTTP/1.1" 200 None
+ERROR:__main__:Exception on /forecast [POST]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_cors\extension.py", line 188, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "currency_API.py", line 76, in call_forecaster
+    train_a_lot=1, retrain=False, refresh_interval=1)), 201
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 203, in lin_reg_predict
+    forecasts = create_plottable(dates, forecast_set)
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 45, in create_plottable
+    temp['x'] = d.total_seconds()
+AttributeError: 'datetime.datetime' object has no attribute 'total_seconds'
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:16:38] "POST /forecast HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:19:25] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:19:25] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:19:28] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:19:28] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:19:34] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyfrom': 'EUR', 'days': 12, 'currencyto': 'PLN'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK48/data?order=asc HTTP/1.1" 200 None
+ERROR:__main__:Exception on /forecast [POST]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_cors\extension.py", line 188, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "currency_API.py", line 76, in call_forecaster
+    train_a_lot=1, retrain=False, refresh_interval=1)), 201
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 204, in lin_reg_predict
+    forecasts = create_plottable(dates, forecast_set)
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 45, in create_plottable
+    t = datetime.strptime(d, '%d.%m.%Y %H:%M:%S,%f')
+TypeError: strptime() argument 1 must be str, not datetime.datetime
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:19:36] "POST /forecast HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:21:48] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:21:48] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:21:50] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:21:50] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:21:54] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyto': 'HUF', 'currencyfrom': 'EUR', 'days': 8}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK34/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:21:57] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:25:26] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:25:26] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:25:29] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:25:29] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:25:34] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'days': 11, 'currencyto': 'PLN', 'currencyfrom': 'EUR'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK48/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:25:37] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:37:46] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:37:46] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:37:49] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:37:49] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:37:54] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyfrom': 'EUR', 'currencyto': 'HUF', 'days': 11}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK34/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:37:57] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:40:31] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:40:31] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:40:36] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyfrom': 'GBP', 'currencyto': 'HUF', 'days': 8}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK33/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:40:38] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:43:18] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:43:18] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:43:20] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:43:20] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:43:25] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyto': 'PLN', 'currencyfrom': 'EUR', 'days': 10}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK48/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:43:28] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:00] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'USD'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:00] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:05] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyto': 'HUF', 'currencyfrom': 'USD', 'days': 10}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK35/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:07] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:30] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:30] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:41] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyto': 'PLN', 'currencyfrom': 'GBP', 'days': 10}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK47/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:44:43] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:50:09] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:50:09] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:50:11] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:50:14] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:50:14] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:50:21] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyfrom': 'EUR', 'days': 10, 'currencyto': 'GBP'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLSER/data?order=asc HTTP/1.1" 200 None
+ERROR:__main__:Exception on /forecast [POST]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_cors\extension.py", line 188, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "currency_API.py", line 76, in call_forecaster
+    train_a_lot=1, retrain=False, refresh_interval=1)), 201
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 205, in lin_reg_predict
+    forecasts, minday, maxday = create_plottable(dates, forecast_set)
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 41, in create_plottable
+    mind = dates[values.index(min(values))]
+AttributeError: 'numpy.ndarray' object has no attribute 'index'
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:50:28] "POST /forecast HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:53:18] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:53:18] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:53:22] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:53:22] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:53:26] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currencyto': 'HUF', 'days': 10, 'currencyfrom': 'GBP'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK33/data?order=asc HTTP/1.1" 200 None
+ERROR:__main__:Exception on /forecast [POST]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_cors\extension.py", line 188, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "currency_API.py", line 76, in call_forecaster
+    train_a_lot=1, retrain=False, refresh_interval=1)), 201
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 207, in lin_reg_predict
+    forecasts, minday, maxday = create_plottable(dates, forecast_set)
+  File "d:\uni\practice\python\travelmoney_advisor\lreg_forecaster.py", line 41, in create_plottable
+    dates = dates.tolist()
+AttributeError: 'list' object has no attribute 'tolist'
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:53:29] "POST /forecast HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:54:16] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:54:16] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:54:19] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:54:19] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:54:23] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'days': 10, 'currencyfrom': 'GBP', 'currencyto': 'PLN'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK47/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:54:25] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:57:21] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:57:21] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:57:24] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'EUR'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:57:25] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:57:31] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'days': 12, 'currencyto': 'PLN', 'currencyfrom': 'EUR'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK48/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 12:57:33] "POST /forecast HTTP/1.1" 201 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 13:01:14] "OPTIONS /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 13:01:14] "GET /currencies?{%20%20%20%22currency%22%20:%20%22EUR%22,%20%20%20%20%22days%22:%205} HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 13:01:17] "OPTIONS /tocurrencies HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'currency': 'GBP'}
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 13:01:17] "POST /tocurrencies HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 13:01:22] "OPTIONS /forecast HTTP/1.1" 200 -
+INFO:root:Ran by 127.0.0.1 data:{'days': 12, 'currencyto': 'HUF', 'currencyfrom': 'GBP'}
+DEBUG:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): www.quandl.com
+DEBUG:requests.packages.urllib3.connectionpool:https://www.quandl.com:443 "GET /api/v3/datasets/BOE/XUDLBK33/data?order=asc HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2017 13:01:24] "POST /forecast HTTP/1.1" 201 -
