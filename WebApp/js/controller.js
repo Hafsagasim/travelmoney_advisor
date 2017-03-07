@@ -3,7 +3,7 @@
  */
 var currencies ={};
 var keys = [];
-var HOST = 'laszloszoboszlai.me';
+var HOST = '127.0.0.1';
 var PORT = '5000';
 var URL = "http://" + HOST + ":" + PORT;
 
@@ -109,10 +109,19 @@ $("#forecast").click(function(){
 
 	$.ajax(settings).done(function (response) {
 		var data = response['forecasts'];
-
+		console.log(data);
 		$("#result").text(JSON.stringify(data));
-		$("#result").fadeIn();
+		//$("#result").fadeIn();
 
-		//$.plot($("#placeholder"), data , { yaxis: { max: 400 } });
+
+        Morris.Line({
+            element: 'placeholder',
+            data: data,
+			ymin: 'auto',
+            xkey: 'x',
+            ykeys: ['y'],
+            labels: ['value']
+        });
+
 		});
 });

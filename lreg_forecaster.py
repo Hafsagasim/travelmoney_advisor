@@ -37,6 +37,15 @@ currencies = {
 
     }
 
+def create_plottable(dates, values):
+    arr = []
+    for d,v in zip(dates, values):
+        temp = {}
+        temp['x'] = int(str(d)[8:])
+        temp['y'] = v
+        arr.append(temp)
+    return arr
+
 def get_next_days(lastknownrate, no_of_days):
     SATURDAY = 5
     SUNDAY = 6
@@ -188,11 +197,11 @@ def lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds = False,save
 
     lastknownrate = str(df.iloc[-1])
     dates = get_next_days(lastknownrate, forecast_out)
-    forecasts = dict(zip(dates, forecast_set))
+    forecasts = create_plottable(dates, forecast_set)
     lastknownrate = str(df.iloc[-1]['label'])
     accuracy = str(score)
     #sorted_forecasts = collections.OrderedDict(sorted(forecasts.items()))
-    print(forecasts['2017-03-07'])
+    #print(forecasts['2017-03-07'])
     return {'lasknownrate' : lastknownrate,
             'accuracy' : accuracy,
             'forecasts' : forecasts}
