@@ -90,6 +90,7 @@ $("#days li a").click(function(){
 $("#forecast").click(function(){
 	$("#progressbar").show();
 	movebar();
+	$("#progressbar").fadeOut();
     var currfrom = ($("#fromDropdownMenu:first-child").val());
 	var currto = ($("#toDropdownMenu:first-child").val());
     var days = ($("#daysDropdownMenu:first-child").val());
