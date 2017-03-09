@@ -3,7 +3,7 @@
  */
 var currencies ={};
 var keys = [];
-var HOST = '127.0.0.1';
+var HOST = 'laszloszoboszlai.me';
 var PORT = '5000';
 var URL = "http://" + HOST + ":" + PORT;
 

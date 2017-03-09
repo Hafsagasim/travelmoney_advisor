@@ -2,29 +2,39 @@
 ## Using machine learning to predict currency exchange rate
 
 ## Currently available rates:
-* USD : USD/HUF
-* GBP : GBP/HUF
-* EUR : EUR/HUF
-* PLN : GBP/PLN
+* EUR -> BGN, GBP, HUF,PLN
+* GBP -> HUF, PLN
+* USD -> GBP, HUF, PLN
 
 ## Endpoints:
-### Available currencies:
+### Available currencies to exchange from:
 * GET /currencies   
+* Returns the available currencies as a JSON 
 * [Endpoint: http://laszloszoboszlai.me:5000/currencies](http://laszloszoboszlai.me:5000/currencies "Link to endpoint")
+
+### Available currencies to exchange to:
+* POST /tocurrencies   
+* Returns the available currencies to translate from a specific curency
+* request format : { "currency" : CURRENCY } 
+* [Endpoint: http://laszloszoboszlai.me:5000/tocurrencies](http://laszloszoboszlai.me:5000/tocurrencies "Link to endpoint")
 
 ###Forecast a specific CURRENCY for X days:
 * POST /forecast
 	* expected JSON format : 
 	* { 
-	* "currency" : "CURRENCY",
+	* "currencyfrom" : "CURRENCY",
+	* "currencyto" : "CURRENCY",
     * "days": X
     * }
-* Example response:
-	* {
-	 * 'lasknownrate': '307.75', 
-	 * 'forecasts': '[ 307.88528343  308.23194486  307.96452032  308.14280335  307.8654742 ]', 
-	 * 'accuracy': '0.975319053163'
-	 * }
+* Response:
+		*   {'lasknownrate' : last known exchange rate (date)
+        *    'accuracy' : accuracy of the prediction (float)
+        *    'forecasts' : forecasted exchange rates (array of dictionaries of date:rate pairs for easy plotting)
+        *    'tosell' : the predicted day for selling the currency (date)
+        *    'tobuy' : to predicted day for buying the currency (date)
+        *    }
 	
 * [Endpoint: http://laszloszoboszlai.me:5000/forecast](http://laszloszoboszlai.me:5000/forecast "Link to endpoint")
 
+#Web application screenshot: 
+![alt tag](http://laszloszoboszlai.me/travelmoney/main_screen.png)
