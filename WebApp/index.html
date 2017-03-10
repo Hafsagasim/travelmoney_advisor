@@ -82,25 +82,41 @@
 		Forecast <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 	</button>
 
-	<div id="progressbar" >
-		<div id="bar">10%</div>
-	</div>	 
-
-    <!--placeholder for the result  -->
-	<div id="result" class="alert alert-success"></div>
-
-    <!--placeholder for the graph  -->
-    <div id="placeholder" style="width:600px;height:300px"></div>
-
 </div>
 
+<div class="row">
+    <div class=".col-lg-4 .col-lg-offset-4 center-block text-center">
+    <div id="progressbar" class="hidden">
+        <div id="bar">10%</div>
+    </div>
+
+    <!--placeholder for the result  -->
+    <div id="result" class="alert alert-success hidden"></div>
+
+    </div>
+</div>
+
+    <div class="row align-items-center justify-content-center">
+    <div class="col-6 col-md-4 text-center">
+    <!--placeholder for the graph  -->
+    <div id="placeholder" style="width:500px;height:300px;margin-left:15px;margin-right:30px;margin-bottom:40px;"></div>
+    </div>
+
+    <div class="col-6 col-md-4 text-right">
+    <!--placeholder for the accuracy  -->
+    <div id="pie" style="height:250px;width:400px;margin-left:30px;margin-top:10px;margin-bottom:30px;"></div>
+    </div>
+    </div>
+
+    <div class="row">
     <div id="footer">
         <div class="container text-center navbar-fixed-bottom">
             <p class="text-muted credit"> by Laszlo Szoboszlai 2017 © </p>
             <p class="text-muted credit danger">Note: The server logs IP addresses for usage monitoring purposes!!!</p>
         </div>
     </div>
-
+    </div>
+</div>
 </div>
 
 
@@ -109,11 +125,6 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-<!--  Flot for graphing
-<script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script>
-
-<script src="js/jquery.canvasjs.min.js"></script>
--->
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>

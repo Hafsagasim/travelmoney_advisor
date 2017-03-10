@@ -1,16 +1,11 @@
 /**
  * Created by Laszlo Szoboszlai on 26/02/2017.
  */
-var currencies ={};
-var keys = [];
 var HOST = 'laszloszoboszlai.me';
 var PORT = '5000';
 var URL = "http://" + HOST + ":" + PORT;
 
 $( document ).ready(function() {
-    $("#result").hide();
-	$("#progressbar").hide();
-
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -80,6 +75,7 @@ function movebar(){
 				elem.innerHTML = width * 1 + '%';
 			}
 	}
+
 }
 
 $("#days li a").click(function(){
@@ -88,9 +84,9 @@ $("#days li a").click(function(){
 });
 
 $("#forecast").click(function(){
-	$("#progressbar").show();
+	$("#progressbar").removeClass('hidden');
 	movebar();
-	$("#progressbar").fadeOut();
+
     var currfrom = ($("#fromDropdownMenu:first-child").val());
 	var currto = ($("#toDropdownMenu:first-child").val());
     var days = ($("#daysDropdownMenu:first-child").val());
@@ -109,11 +105,23 @@ $("#forecast").click(function(){
 		}
 
 	$.ajax(settings).done(function (response) {
+        $("#progressbar").fadeOut();
 		var data = response['forecasts'];
+		var poz = parseFloat(response['accuracy']).toFixed(2) * 100;
+		var neg = 100 - poz;
+
+		var piedata =[
+			{label: 'Accuracy',  value : poz},
+            {label: 'Inaccuracy',  value : neg}
+		];
+		console.log(piedata);
+        $("#result").removeClass('hidden');
 		$("#result").text('According to the forecast the best day to buy is: ' + response['tobuy'] + ' and to sell is: ' + response['tosell']);
 		$("#result").fadeIn();
 
+
         Morris.Line({
+        	hideHover: false,
             element: 'placeholder',
             data: data,
 			ymin: 'auto',
@@ -121,5 +129,15 @@ $("#forecast").click(function(){
             ykeys: ['y'],
             labels: ['value']
         });
+
+        Morris.Donut({
+        	formatter: function (y, data) { return y + '%' },
+            element: 'pie',
+            hideHover: 'auto',
+            resize: true,
+            data: piedata,
+			colors: ['#1424b8', '#b83214']
+        });
+
 		});
 });
