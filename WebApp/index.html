@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="http://laszloszoboszlai.me/travelmoney/favicon.ico" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,6 +107,12 @@
     <!--placeholder for the accuracy  -->
     <div id="pie" style="height:250px;width:400px;margin-left:30px;margin-top:10px;margin-bottom:30px;"></div>
     </div>
+
+        <div class="col-6 col-md-4 text-right">
+            <!--placeholder for the gauge  -->
+            <div id="gauge" style="height:250px;width:400px;margin-left:30px;margin-top:10px;margin-bottom:30px;"></div>
+        </div>
+
     </div>
 
     <div class="row">
@@ -125,9 +132,11 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-
+<!-- JS for the graphs -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+<!-- JS for gauge -->
+<script src="js/justgage.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>

@@ -1,7 +1,7 @@
 /**
  * Created by Laszlo Szoboszlai on 26/02/2017.
  */
-var HOST = 'laszloszoboszlai.me';
+var HOST = '127.0.0.1';
 var PORT = '5000';
 var URL = "http://" + HOST + ":" + PORT;
 
@@ -109,12 +109,15 @@ $("#forecast").click(function(){
 		var data = response['forecasts'];
 		var poz = parseFloat(response['accuracy']).toFixed(2) * 100;
 		var neg = 100 - poz;
+		var maxrate = response['maxrate'];
+		var lastknown = response['lastknownrate'];
 
 		var piedata =[
 			{label: 'Accuracy',  value : poz},
             {label: 'Inaccuracy',  value : neg}
 		];
-		console.log(piedata);
+
+		console.log(lastknown);
         $("#result").removeClass('hidden');
 		$("#result").text('According to the forecast the best day to buy is: ' + response['tobuy'] + ' and to sell is: ' + response['tosell']);
 		$("#result").fadeIn();
@@ -138,6 +141,16 @@ $("#forecast").click(function(){
             data: piedata,
 			colors: ['#1424b8', '#b83214']
         });
+
+        var g = new JustGage({
+            id: "gauge",
+            value: lastknown,
+            min: 0,
+            max: maxrate,
+            title: "Last known rate",
+            label: "Last known rate"
+        });
+
 
 		});
 });

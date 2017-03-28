@@ -1,23 +1,18 @@
+'''
+Linear regression forecaster for currency exchange rates using Quandl tickers.
+Author : Laszlo Szoboszlai
+2017
+'''
 import pandas as pd
 import quandl, math, datetime, os, platform, time
 import numpy as np
 from sklearn import preprocessing, cross_validation, svm
 from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
-from matplotlib import style
 from datetime import datetime
 from datetime import timedelta
 import pickle
-import collections
 
-#currencies2 = {
-  #              'USD' : 'BOE/XUDLBK35',
-   #             'GBP' : 'BOE/XUDLBK33',
-  #              'EUR' : 'BOE/XUDLBK34',
-   #             'PLN' : 'BOE/XUDLBK47',
-    #            'BGN' : 'BOE/EURBGN'
-    #         }
-
+'''Quandl tickers'''
 currencies = {
             'USD' :{
                         'HUF' : 'BOE/XUDLBK35',
@@ -33,39 +28,46 @@ currencies = {
                         'BGN' : 'ECB/EURBGN',
                         'PLN' : 'BOE/XUDLBK48',
                         'GBP' : 'BOE/XUDLSER'
-}
+                    }
 
-    }
+            }
 
 def create_plottable(dates, values):
+    '''Creates plottable timestamps(dates) for the frontend
+    :param dates: the dates predicted for
+    :param values: the predicted values
+    :return: arr : points to plot, min_day : date of the minimum value, max_day : date of the maximum value
+    '''
     values = values.tolist()
-    mind = str(dates[values.index(min(values))])[:10]
-    maxd = str(dates[values.index(max(values))])[:10]
-    arr = []
+    min_day = str(dates[values.index(min(values))])[:10]
+    max_day = str(dates[values.index(max(values))])[:10]
+    points = []
 
-    for d,v in zip(dates, values):
+    for date,value in zip(dates, values):
         temp = {}
-        temp['x'] = (d.timestamp() * 1000)
-        temp['y'] = round(v, 3)
-        arr.append(temp)
-    return arr, mind, maxd
+        temp['x'] = (date.timestamp() * 1000)
+        temp['y'] = round(value, 3)
+        points.append(temp)
+    return points, min_day, max_day
 
 def get_next_days(lastknownrate, no_of_days):
+    '''
+    Selects and returns the weekdays only for given number of days.
+    :param lastknownrate: last known exchange rate
+    :param no_of_days: number of days to do the selection
+    :return: list of dates which are weekdays
+    '''
     SATURDAY = 5
     SUNDAY = 6
     dates = []
     pos = lastknownrate.find('Name:') + 6
     date_str = lastknownrate[pos:pos + 10]
     date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-    i=0
     date_obj = date_obj + timedelta(days= no_of_days+2)
+    i = 0
     while i<no_of_days:
         date_obj= date_obj + timedelta(days=1)
         if ((date_obj.weekday() != SATURDAY) & (date_obj.weekday() != SUNDAY)):
-
-            #date = str(date_obj)
-            #date = date[:10]
-            #dates.append(date)
             dates.append(date_obj)
             i=i+1
     return dates
@@ -87,11 +89,12 @@ def creation_date(path_to_file):
             return stat.st_mtime
 
 def download_data(currencyfrom, currencyto, save = False, silent = True ):
-    '''Function to download currency data from Quandl site.
-        currency = the name of the currency to download
-        save = if True saves the data in 'CURRENCYNAME'.csv file, default = False
-        silent = if False, prints logs on stdout, default = True
-        returns dataframe
+    '''Function to download currency exchange rate data from Quandl site.
+    :param currencyfrom: the currency to change from
+    :param currencyto: the currency to change to
+    :param save: if True saves the data in 'CURRENCYNAME'.csv file, default = False
+    :param silent: if False, prints logs on stdout, default = True
+    :return: dataframe with exchange rate data form Quandl.
     '''
     df = quandl.get(currencies[currencyfrom][currencyto])
     df.columns= [currencyto]
@@ -105,12 +108,13 @@ def download_data(currencyfrom, currencyto, save = False, silent = True ):
 
 def load_data(currencyfrom, currencyto, save = False, silent = True, refresh_interval = 1):
     '''Function to download new data if the saved data is "too old" .
-       Use this instead of download_data for cacheing.
-        currency = the name of the currency to load
-        save = passes it to download_data if its called.
-        silent = if False, prints logs on stdout, default = True
-        refesh_interval = sets the interval in days
-        returns dataframe
+       NOTE: Use this instead of download_data for cacheing.
+    :param currencyfrom: the currency to change from
+    :param currencyto: the currency to change to
+    :param save: passes it to download_data if its called.
+    :param silent: if False, prints logs on stdout, default = True
+    :param refresh_interval: sets the interval in days
+    :return: dataframe with exchange rate data form Quandl.
     '''
     #turn days into seconds
     refresh_interval = refresh_interval * 86400
@@ -126,7 +130,8 @@ def lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds = False,save
                     train_a_lot = 1, retrain = False, refresh_interval = 1,):
     '''
     Function to predict out future currency rates.
-    :param currency: the currency we want prediction for.
+    :param currencyfrom: the currency to change from
+    :param currencyto: the currency to change to
     :param forecast_out: the number of days we want the prediction for.
     :param save_ds: triggers cacheing of newly downloaded dataset.
     :param savemodel: triggers saving the classifier.
@@ -138,7 +143,6 @@ def lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds = False,save
     :return:predicted currency rates for "forecast_out" number of days
     '''
     df = load_data(currencyfrom, currencyto, save_ds, silent, refresh_interval) if cache else download_data(currencyfrom, currencyto, save_ds, silent)
-
     df = df[[currencyto]]
 
     # currency to forecast
@@ -150,6 +154,7 @@ def lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds = False,save
     df = df [[currencyto,'label',]]
 
     x = np.array(df.drop(['label'],1))
+    maxrate = x.max()
 
     x = preprocessing.scale(x)
     x = x[:-forecast_out]
@@ -186,7 +191,6 @@ def lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds = False,save
         pickle_in = open(currency_file,'rb')
         model = pickle.load(pickle_in)
 
-
     #save the best model after training
     if needs_saving:
         with open(currency_file,'wb') as f:
@@ -204,11 +208,11 @@ def lin_reg_predict(currencyfrom, currencyto, forecast_out, save_ds = False,save
     lastknownrate = str(df.iloc[-1])
     dates = get_next_days(lastknownrate, forecast_out)
     forecasts, minday, maxday = create_plottable(dates, forecast_set)
-    lastknownrate = str(df.iloc[-1]['label'])
+    lastknownrate = df.iloc[-1]['label']
     accuracy = str(score)
-    #sorted_forecasts = collections.OrderedDict(sorted(forecasts.items()))
-    #print(forecasts['2017-03-07'])
-    return {'lasknownrate' : lastknownrate,
+
+    return {'maxrate' : maxrate,
+            'lasknownrate' : lastknownrate,
             'accuracy' : accuracy,
             'forecasts' : forecasts,
             'tosell' : maxday,
