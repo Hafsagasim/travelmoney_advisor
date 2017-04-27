@@ -2,9 +2,9 @@
 ## Using machine learning to predict currency exchange rate
 
 ## Problem definition
-When I travel to my home country I am always unsure what is the best date
+When I travel to my home country I always unsure what is the best date
 to exchange my money, to get the best rate possible. It is even more difficult
-in case I need to exchange a large amount. In order to make the decision easier 
+in case I need to exchange a larger amount. In order to make the decision easier 
 I have created this Flask based API using machine learning, to find the best date in the near future, 
 and created a web interface to access the API functionality, which can be checked [here.](http://laszloszoboszlai.me/travelmoney "Link to travelmoney webapp")
   
