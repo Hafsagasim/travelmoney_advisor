@@ -1,5 +1,6 @@
 # Travel money advisor 
-## Using machine learning to predict currency exchange rate
+---
+###### Using machine learning to predict currency exchange rate
 
 ## Problem definition
 When I travel to my home country I always unsure what the best date is
@@ -50,6 +51,6 @@ and created a web interface to access the API functionality, which can be checke
 * Create a mobile application using the API.
 * Move to microservice architecture.
   
-#Web application screenshot: 
+# Web application screenshot: 
 
 ![alt tag](http://laszloszoboszlai.me/travelmoney/main_screen.png)
