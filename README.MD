@@ -5,9 +5,8 @@
 When I travel to my home country I am always unsure what is the best date
 to exchange my money, to get the best rate possible. It is even more difficult
 in case I need to exchange a large amount. In order to make the decision easier 
-I have created this Flask based API using machine learning, to find the best date  
-in the near future, and created a web interface to access the API functionality, 
-which can be checked [here](http://laszloszoboszlai.me/travelmoney "Link to travelmoney webapp")
+I have created this Flask based API using machine learning, to find the best date in the near future, 
+and created a web interface to access the API functionality, which can be checked [here.](http://laszloszoboszlai.me/travelmoney "Link to travelmoney webapp")
   
 
 ## Currently available rates:
@@ -15,7 +14,7 @@ which can be checked [here](http://laszloszoboszlai.me/travelmoney "Link to trav
 * GBP -> HUF, PLN
 * USD -> GBP, HUF, PLN
 
-## Endpoints:
+## API Endpoints:
 ### Available currencies to exchange from:
 * GET /currencies   
 * Returns the available currencies as a JSON 
