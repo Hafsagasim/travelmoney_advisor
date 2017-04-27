@@ -1,4 +1,4 @@
-# Travel money advisor API
+# Travel money advisor 
 ## Using machine learning to predict currency exchange rate
 
 ## Problem definition
@@ -44,6 +44,12 @@ and created a web interface to access the API functionality, which can be checke
 	
 * [Endpoint: http://laszloszoboszlai.me:5000/forecast](http://laszloszoboszlai.me:5000/forecast "Link to endpoint")
 
+### Future plans
+* My plan is to create another API for sentiment analysis of different financial websites to improve the 
+  prediction accuracy from the gained knowledge.  
+* Create a mobile application using the API.
+* Move to microservice architecture.
+  
 #Web application screenshot: 
 
 ![alt tag](http://laszloszoboszlai.me/travelmoney/main_screen.png)
