@@ -5,7 +5,14 @@ var HOST = 'laszloszoboszlai.me';
 var PORT = '5000';
 var URL = "http://" + HOST + ":" + PORT;
 
+
+/*$(window).on('load',function(){
+		$('#Modal').modal('show');
+	});
+*/
+
 $( document ).ready(function() {
+	$('#Modal').modal('show');
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -84,60 +91,74 @@ $("#days li a").click(function(){
 });
 
 $("#forecast").click(function(){
-	$("#progressbar").removeClass('hidden');
-	movebar();
-
     var currfrom = ($("#fromDropdownMenu:first-child").val());
 	var currto = ($("#toDropdownMenu:first-child").val());
     var days = ($("#daysDropdownMenu:first-child").val());
-    var settings = {
-		"async": true,
-		"crossDomain": true,
-		"url": URL + "/forecast",
-		"method": "POST",
-		"headers": {
-			"content-type": "application/json",
-			"cache-control": "no-cache",
-			"postman-token": "d0134958-b639-0d25-f0a6-838ca556c7e9"
+
+	if (!currfrom || !currto || !days){
+		$("#result").removeClass('hidden');
+		$("#result").removeClass('alert-success');
+		$("#result").addClass('alert-danger')
+		$("#result").text('All fileds need to be selected!');
+		$("#result").fadeIn();
+	}
+	else {
+		$("#result").addClass('hidden');
+		$("#result").removeClass('alert-danger');
+		$("#result").addClass('alert-success')
+		$("#progressbar").removeClass('hidden');
+		movebar();
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": URL + "/forecast",
+			"method": "POST",
+			"headers": {
+				"content-type": "application/json",
+				"cache-control": "no-cache",
+				"postman-token": "d0134958-b639-0d25-f0a6-838ca556c7e9"
 			},
-		"processData": false,
-        "data": "{\n \"currencyfrom\": \"" + currfrom + "\",\n \"currencyto\": \"" + currto + "\",\n \"days\":"+days + "\n}"
+			"processData": false,
+			"data": "{\n \"currencyfrom\": \"" + currfrom + "\",\n \"currencyto\": \"" + currto + "\",\n \"days\":" + days + "\n}"
 		}
 
-	$.ajax(settings).done(function (response) {
-        $("#progressbar").fadeOut();
-		var data = response['forecasts'];
-		var poz = parseFloat(response['accuracy']).toFixed(2) * 100;
-		var neg = 100 - poz;
+		$.ajax(settings).done(function (response) {
+			$("#progressbar").fadeOut();
+			var data = response['forecasts'];
+			var poz = parseFloat(response['accuracy']).toFixed(2) * 100;
+			var neg = 100 - poz;
 
-		var piedata =[
-			{label: 'Accuracy',  value : poz},
-            {label: 'Inaccuracy',  value : neg}
-		];
-		console.log(piedata);
-        $("#result").removeClass('hidden');
-		$("#result").text('According to the forecast the best day to buy is: ' + response['tobuy'] + ' and to sell is: ' + response['tosell']);
-		$("#result").fadeIn();
+			var piedata = [
+				{label: 'Accuracy', value: poz},
+				{label: 'Inaccuracy', value: neg}
+			];
+			console.log(piedata);
+			$("#result").removeClass('hidden');
+			$("#result").text('According to the forecast the best day to buy is: ' + response['tobuy'] + ' and to sell is: ' + response['tosell']);
+			$("#result").fadeIn();
 
 
-        Morris.Line({
-        	hideHover: false,
-            element: 'placeholder',
-            data: data,
-			ymin: 'auto',
-            xkey: 'x',
-            ykeys: ['y'],
-            labels: ['value']
-        });
+			Morris.Line({
+				hideHover: false,
+				element: 'placeholder',
+				data: data,
+				ymin: 'auto',
+				xkey: 'x',
+				ykeys: ['y'],
+				labels: ['value']
+			});
 
-        Morris.Donut({
-        	formatter: function (y, data) { return y + '%' },
-            element: 'pie',
-            hideHover: 'auto',
-            resize: true,
-            data: piedata,
-			colors: ['#1424b8', '#b83214']
-        });
+			Morris.Donut({
+				formatter: function (y, data) {
+					return y + '%'
+				},
+				element: 'pie',
+				hideHover: 'auto',
+				resize: true,
+				data: piedata,
+				colors: ['#1424b8', '#b83214']
+			});
 
 		});
+	}
 });

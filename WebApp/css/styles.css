@@ -7,6 +7,13 @@ body {
     background-color: #DFBFBF;
 }
 
+#Modal {
+    background-color:  #222;
+}
+.modal-backdrop {
+    background-color: antiquewhite;
+}
+
 #pie{
     margin-left: 30px;
 }
