@@ -1,12 +1,21 @@
-# Travel money advisor API
-## Using machine learning to predict currency exchange rate
+# Travel money advisor 
+
+###### Using machine learning to predict currency exchange rate
+
+## Problem definition
+When I travel to my home country I always unsure what the best date is
+to exchange my money to get the best possible rate. It is even more difficult
+in case I need to exchange a larger amount. In order to make the decision easier 
+I have created this Flask based API using machine learning, to find the best date in the near future, 
+and created a web interface to access the API functionality, which can be checked [here.](http://laszloszoboszlai.me/travelmoney "Link to travelmoney webapp")
+  
 
 ## Currently available rates:
 * EUR -> BGN, GBP, HUF,PLN
 * GBP -> HUF, PLN
 * USD -> GBP, HUF, PLN
 
-## Endpoints:
+## API Endpoints:
 ### Available currencies to exchange from:
 * GET /currencies   
 * Returns the available currencies as a JSON 
@@ -18,7 +27,7 @@
 * request format : { "currency" : CURRENCY } 
 * [Endpoint: http://laszloszoboszlai.me:5000/tocurrencies](http://laszloszoboszlai.me:5000/tocurrencies "Link to endpoint")
 
-###Forecast a specific CURRENCY for X days:
+### Forecast a specific CURRENCY for X days:
 * POST /forecast
 	* expected JSON format : 
 	* { 
@@ -35,6 +44,13 @@
         *    }
 	
 * [Endpoint: http://laszloszoboszlai.me:5000/forecast](http://laszloszoboszlai.me:5000/forecast "Link to endpoint")
+---
+### Future plans
+* My plan is to create another API for sentiment analysis of different financial websites to improve the 
+  prediction accuracy from the gained knowledge.  
+* Create a mobile application using the API.
+* Move to microservice architecture.
+  
+# Web application screenshot: 
 
-#Web application screenshot: 
 ![alt tag](http://laszloszoboszlai.me/travelmoney/main_screen.png)
