@@ -4,8 +4,19 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #DFBFBF;
+    background-image: url("hand.png");
+    background-size: cover;
+   // background-color: #DFBFBF;
 }
+
+.label-default{
+    background-color: darkcyan;
+}
+
+.btn-default{
+    background-color: cadetblue;
+}
+
 
 #Modal {
     background-color:  #222;
@@ -46,18 +57,18 @@ body {
 }
 .navbar-fixed-bottom{
     margin-top:25px;
-    color: darkslateblue;
+    color: #122b40;
     text-align: center;
     vertical-align: middle;
     font-family: ‘Book Antiqua’,‘Palatino Linotype’, Palatino, serif;
-    background-color: lightskyblue;
+    background-color: darkseagreen;
     background-size:cover;
     background-position:center;
     width:100%;
 }
 
 .danger{
-    background-color: #761c19;
+    background-color: hotpink;
     color: #122b40;
 }
 
