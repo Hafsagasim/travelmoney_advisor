@@ -37,12 +37,12 @@ and created a web interface to access the API functionality, which can be checke
     * "days": X
     * }
 * Response:
-		*   {'lasknownrate' : last known exchange rate (date)
-        *    'accuracy' : accuracy of the prediction (float)
-        *    'forecasts' : forecasted exchange rates (array of dictionaries of date:rate pairs for easy plotting)
-        *    'tosell' : the predicted day for selling the currency (date)
-        *    'tobuy' : to predicted day for buying the currency (date)
-        *    }
+		* {'lasknownrate' : last known exchange rate (date)
+        * 'accuracy' : accuracy of the prediction (float)
+        * 'forecasts' : forecasted exchange rates (array of dictionaries of date:rate pairs for easy plotting)
+        * 'tosell' : the predicted day for selling the currency (date)
+        * 'tobuy' : to predicted day for buying the currency (date)
+        * }
 	
 * [Endpoint: http://laszloszoboszlai.me:5000/forecast](http://laszloszoboszlai.me:5000/forecast "Link to endpoint")
 ---
